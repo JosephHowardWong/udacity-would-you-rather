@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class LeaderBoard extends Component {
     render() {
 
-        const { users } = this.props;
+        const { users, authedUser } = this.props;
+
+        if(authedUser === null) {
+            return <Redirect to='/error' />
+        }
 
         const userData = Object.values(users)
 
@@ -44,9 +49,10 @@ class LeaderBoard extends Component {
     }
 }    
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, authedUser }) => {
     return {
         users,
+        authedUser,
     }
 }
 

@@ -24,9 +24,18 @@ class Login extends Component {
     
     render() {
         
-        const { users, authedUser } = this.props
+        const { users, authedUser, questions } = this.props
         
         const userData = Object.values(users)
+
+        const qKeys = Object.keys(questions)
+
+        if(authedUser !== null && authedUser !== "" && this.props.location.state !== undefined) {
+            if(qKeys.includes(this.props.location.state.referrer)) {
+                return <Redirect to={`/questions/${this.props.location.state.referrer}`} />
+            }
+            return <Redirect to='/error' />
+        }
 
         if(authedUser !== null && authedUser !== "") {
             return <Redirect to='/' />
@@ -51,10 +60,11 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = ({ users, authedUser }) => {
+const mapStateToProps = ({ users, authedUser, questions }) => {
     return {
         users,
         authedUser,
+        questions,
     }
 }
 

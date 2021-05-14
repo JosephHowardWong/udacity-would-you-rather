@@ -188,6 +188,13 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
+      // console.log("inside data.js")
+
+      // if(!Object.keys(questions).includes(qid)) {
+      //   break;
+      //   rej()
+      // }
+
       questions = {
         ...questions,
         [qid]: {

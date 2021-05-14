@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleSaveAnswer } from './actions/questions'
 import QTally from './QTally'
 import { Redirect } from 'react-router-dom'
+import { logout } from './actions/authedUser'
 // import sarahedo from './profilePics/sarahedo.jpg'
 // import tylermcginnis from './profilePics/tylermcginnis.jpg'
 // import johndoe from './profilePics/johndoe.jpg'
@@ -15,10 +16,10 @@ class QPg extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { match } = this.props
+        const { match, dispatch } = this.props
         const { params } = match
         const { qid } = params
-        this.props.dispatch(handleSaveAnswer(qid, this.state.selectedOption))
+        dispatch(handleSaveAnswer(qid, this.state.selectedOption))
     }
 
     handleChange = (e) => {
@@ -31,12 +32,18 @@ class QPg extends Component {
         const { params } = match
         const { qid } = params
         
-        if(!questions[qid] || authedUser === null) {
-            return <Redirect to='/error' />
+        if(!questions[qid]) {
+            this.props.dispatch(logout())    
+            return <Redirect to={{ pathname: "/login", state: { referrer: qid } }} />
+        }
+        
+        if(authedUser === null) {
+            return <Redirect to={{ pathname: "/login", state: { referrer: qid } }} />
+            // return <Redirect to='/error' />
         }
 
         let totalVotes = questions[qid].optionOne.votes.length +
-                           questions[qid].optionTwo.votes.length 
+                            questions[qid].optionTwo.votes.length 
 
         if(questions[qid].optionOne.votes.includes(authedUser) || questions[qid].optionTwo.votes.includes(authedUser)) {
 

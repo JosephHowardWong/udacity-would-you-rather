@@ -33,7 +33,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  outline: 1px solid red;
 }
 
 .nav-link {
@@ -87,7 +86,6 @@ li:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  outline: 1px solid red;
   height: 10rem;
 }
 
@@ -115,7 +113,6 @@ li:hover {
   justify-content: space-around;
   align-items: center;
   height: 60%;
-  outline: 1px solid red;
   width: 90%;
 }
 
@@ -151,13 +148,11 @@ li:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  /* margin: 3rem; */
   width: 90%;
   background-color: lightblue;
   border-radius: 2rem;
   border: 1px solid black;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 3);
-  outline: 1px solid red;
   height: 10rem;
 }
 
@@ -198,7 +193,6 @@ li:hover {
   border: 1px solid black;
   border-radius: 2rem;
   width: 70vw;
-  outline: 1px solid red;
   min-height: 17rem;
 }
 
@@ -258,7 +252,6 @@ button {
   border-radius: 900px;
   transition: transform 0.1s ease-in-out;
   padding: 1rem 0rem;
-  outline: 1px solid red;
 }
 
 button:hover {

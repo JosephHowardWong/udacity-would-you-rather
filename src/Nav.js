@@ -5,7 +5,6 @@ import { logout } from './actions/authedUser'
 import sarahedo from './profilePics/sarahedo.jpg'
 import tylermcginnis from './profilePics/tylermcginnis.jpg'
 import johndoe from './profilePics/johndoe.jpg'
-
 // I have to import the 3 profile pics or else the avatars don't work ???
 
 class Nav extends Component {

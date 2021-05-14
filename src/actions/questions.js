@@ -54,8 +54,9 @@ export function handleSaveQuestion(optionOneText, optionTwoText) {
 export function handleSaveAnswer(qid, answer) {
     return (dispatch, getState) => {
         const { authedUser } = getState()
-        dispatch(saveAnswer(authedUser, qid, answer))
+        // dispatch(saveAnswer(authedUser, qid, answer))
         return _saveQuestionAnswer({ authedUser, qid, answer })
+            .then(() => dispatch(saveAnswer(authedUser, qid, answer)))
             .catch((e) => {
                 console.warn("Error in handleSaveAnswer: ", e)
             })
